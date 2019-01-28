@@ -6,7 +6,7 @@ var db = mongoose.connect("mongodb://localhost/swag-shop"); //{ useNewUrlParser:
 
 
 var Product = require('./model/product');
-var WishList = require('./model/wishList');
+var WishList = require('./model/wishlist');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -25,6 +25,35 @@ app.post('/product', function(request, response) {
         }
     });
 });
+
+app.get('/product', function(request, response) {
+    Product.find({},function(err, products) {
+        if(err) {
+            response.status(500).send({error:"Could not fetch products!"})
+        }
+        else {
+            response.send(products);
+        }
+    });
+
+});
+
+app.post('/wishlist', function(request, response){
+    //var wishList = new WishList();
+    //wishList.title = request.body.title;
+    
+    //wishList.save(function(err, newWishList){
+    //    if(err) {
+    //        response.status(500).send({error: "Could not create wishList"});    
+    //    }
+    //    else {
+    //        response.send(newWishList);
+    //    }
+    //});
+} );
+
+
+
 
 
 app.listen(3000, function() {
