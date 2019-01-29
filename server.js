@@ -38,20 +38,53 @@ app.get('/product', function(request, response) {
 
 });
 
-app.post('/wishlist', function(request, response){
-    //var wishList = new WishList();
-    //wishList.title = request.body.title;
-    
-    //wishList.save(function(err, newWishList){
-    //    if(err) {
-    //        response.status(500).send({error: "Could not create wishList"});    
-    //    }
-    //    else {
-    //        response.send(newWishList);
-    //    }
-    //});
+app.get('/wishlist', function(request, response){
+    WishList.find({}).populate({path:'products', model:'Product'}).exec(function(err, wishLists)
+    {
+        if(err) {
+            response.status(500).send({error: "Could not fetch wishLists"});
+        }
+        else {
+            response.status(200).send(wishLists);
+        }
+                                                                         
+    });
 } );
 
+
+
+app.post('/wishlist', function(request, response){
+    var wishList = new WishList();
+    wishList.title = request.body.title;
+    
+    wishList.save(function(err, newWishList){
+        if(err) {
+            response.status(500).send({error: "Could not create wishList"});    
+        }
+        else {
+            response.send(newWishList);
+        }
+    });
+} );
+
+
+app.put('/wishlist/product/add', function(request, response){
+    Product.findOne({_id: request.body.productId}, function(err, product) {
+        if(err) {
+            response.status(500).send({error:"Could not add item to wishlist"})
+        }
+        else {
+            WishList.update({_id:request.body.wishListId}, {$addToSet: {products: product._id}}, function(err, wishList) {
+                if(err) {
+                    response.status(500).send({error:"Could not add item to wishlist"})
+                }
+                else {
+                    response.send(wishList);
+                }
+            });
+        }
+    })
+});
 
 
 
