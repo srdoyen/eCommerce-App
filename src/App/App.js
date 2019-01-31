@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import HttpService from '../services/http-service';
+import Product from '../product/product'
 
 const http = new HttpService();
 
@@ -10,9 +11,19 @@ class App extends Component {
     
 	constructor(props) {
 		super(props);
-		http.getProducts();
+		
+		//Bind functions
+		this.loadData = this.loadData.bind(this);
+		this.loadData();
 	}
     
+	loadData = () => {
+		http.getProducts().then(products => {
+			console.log(products);
+		}, err=> {
+			
+		});
+	}
     
   render() {
     return (
@@ -31,7 +42,15 @@ class App extends Component {
             Welcome to the Swag Shop
           </a>
         </header>
-      </div>
+		<div className="container App-main">
+			<div className="row">
+				<Product className="col-sm-4" price="4.23" title="Cool Toy Gun" imgUrl="http://pop.h-cdn.co/assets/cm/15/05/54ca62c3d99f0_-_waterguns-5.jpg"/>
+				<Product className="col-sm-4" price="4.23" title="Cool Toy Gun" imgUrl="http://pop.h-cdn.co/assets/cm/15/05/54ca62c3d99f0_-_waterguns-5.jpg"/>
+				<Product className="col-sm-4" price="4.23" title="Cool Toy Gun" imgUrl="http://pop.h-cdn.co/assets/cm/15/05/54ca62c3d99f0_-_waterguns-5.jpg"/>
+			</div>
+			
+		</div>
+	</div>
     );
   }
 }
