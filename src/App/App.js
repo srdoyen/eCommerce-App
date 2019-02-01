@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+
+//Services
 import HttpService from '../services/http-service';
+
+//Components
 import Product from '../product/product'
+import WishList from '../wishlist/wishlist';
+
 
 const http = new HttpService();
 
@@ -57,9 +63,16 @@ productList = () => {
             Welcome to the Swag Shop
           </a>
         </header>
-		<div className="container App-main">
+		<div className="container-fluid App-main">
 			<div className="row">
-				{this.productList()}
+				<div className="col-sm-8">
+					<div className="row">{this.productList()}</div>
+					
+				</div>
+				<div className="col-sm-4">
+					<WishList />
+				</div>
+				
 			</div>
 			
 		</div>
