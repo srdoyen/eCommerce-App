@@ -52,7 +52,7 @@ productList = () => {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Hi Sarah pay attention.
+            My first React.js Application.
           </p>
           <a
             className="App-link"
