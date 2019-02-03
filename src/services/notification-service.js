@@ -24,19 +24,6 @@ class NotificationService
 		}
 	}
 	
-	addObserver = (notifName, observer, callBack) => 
-	{
-		let obs = observers[notifName];
-		
-		if(!obs) 
-		{
-			observers[notifName] = [];
-		}
-		
-		let obj = {observer: observer, callBack: callBack};
-		observer[notifName].push(obj);
-	}
-	
 	removeObserver = (observer, notifName) => 
 	{
 		var obs = observers[notifName];
@@ -55,6 +42,21 @@ class NotificationService
 		}
 		
 	}
+	
+	addObserver = (notifName, observer, callBack) => 
+	{
+		let obs = observers[notifName];
+		
+		if(!obs) 
+		{
+			observers[notifName] = [];
+		}
+		
+		let obj = {observer: observer, callBack: callBack};
+		observers[notifName].push(obj);
+	}
+	
+	
 }
 
 export default NotificationService;
