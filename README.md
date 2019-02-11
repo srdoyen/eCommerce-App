@@ -1,8 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# First Full Stack App
+
+![alt text](https://github.com/srdoyen/swag-shop-web/tree/master/src/imgs/disp.PNG)
 
 ### `Intro`
 
-This React web app was my first full stack application that I learned through a [Beginner Full Stack Web Development] https://www.udemy.com/ultimate-web/ course online at Udemy.com by Mark Price.
+This React web app was my first full stack application that I learned through a [Beginner Full Stack Web Development](https://www.udemy.com/ultimate-web/) course online at Udemy.com by Mark Price.
 
 ### `Objective`
 
