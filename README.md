@@ -1,6 +1,6 @@
 # First Full Stack App
 
-![alt text](https://github.com/srdoyen/swag-shop-web/tree/master/src/imgs/disp.PNG)
+![alt text](https://github.com/srdoyen/swag-shop-web/blob/master/src/imgs/disp.PNG)
 
 ### `Intro`
 
